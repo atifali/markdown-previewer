@@ -2,7 +2,9 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math'
+import remarkEmoji from 'remark-emoji'
 import rehypeKatex from 'rehype-katex'
+import rehypeRaw from "rehype-raw";
 
 import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
 
@@ -25,6 +27,8 @@ _This will also be italic_
 __This will also be bold__
 
 _You **can** combine them_
+
+~~This text will be strikethrough~~
 
 ## Lists
 
@@ -58,7 +62,7 @@ This web site is using \`remarkjs/react-markdown\`.
 
 ## Images
 
-![This is an alt text.](/vite.svg "This is a sample image.")
+![This is an alt text.](/markdown.svg "This is a sample image.")
 
 ## Links
 
@@ -78,6 +82,18 @@ You may be using [Google](https://google.com/).
 | left bar      | right bar     |
 | left baz      | right baz     |
 
+## Emojis
+Classic markup: :wink: :cry: :laughing: :yum:
+
+## HTML
+I need to highlight these <mark>very important words</mark>.
+
+This **word** is bold. This <em>word</em> is italic.
+
+This is for subscripts: H<sub>2</sub>O
+
+This is for superscripts: X<sup>2</sup>
+
 ## Maths
 
 You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
@@ -92,10 +108,10 @@ $$
 `);
 
     return (
-        <div className="h-screen p-4 bg-base-200 text-base-content">
-            <div className="text-2xl font-bold mb-4 text-center">Markdown Previewer</div>
+        <div className="h-screen p-8 bg-base-200 text-base-content">
+            <div className="text-4xl font-bold mb-4 text-center">Markdown Previewer</div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[89vh]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[85vh]">
                 {/* Markdown Editor */}
                 <div className="flex flex-col bg-base-100 rounded-box shadow p-4">
                     <div className="text-lg font-semibold mb-2">Editor</div>
@@ -111,7 +127,7 @@ $$
                 <div className="flex flex-col bg-base-100 rounded-box shadow p-4 overflow-auto">
                     <div className="text-lg font-semibold mb-2">Preview</div>
                     <div className="prose max-w-none dark:prose-invert markdown">
-                        <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]} >{markdown}</ReactMarkdown>
+                        <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath, remarkEmoji]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{markdown}</ReactMarkdown>
                     </div>
                 </div>
             </div>
