@@ -10,7 +10,7 @@ function Previewer(props) {
     return (
         <div className="flex flex-col bg-base-100 rounded-box shadow-xl/30 p-4 overflow-auto">
             <div className="text-lg font-bold mb-2">Preview</div>
-            <div className="prose max-w-none dark:prose-invert markdown overflow-auto">
+            <div ref={props.previewDivRef} onScroll={props.handlePreviewScroll} className="prose max-w-none dark:prose-invert markdown overflow-auto">
                 <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath, remarkEmoji]} rehypePlugins={[rehypeKatex, rehypeRaw]} >{props.markdown}</ReactMarkdown>
             </div>
         </div>
