@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Navbar(props) {
+function Navbar() {
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
 
     const handleThemeToggle = (e) => {

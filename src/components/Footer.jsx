@@ -1,7 +1,47 @@
+import { useEffect, useRef } from "react";
+
 function Footer(props) {
+    const editorRef = useRef(null);
+    const bothRef = useRef(null);
+    const previewRef = useRef(null);
+
+    const editorOnclick = () => {
+        props.setViewMode("editor");
+    }
+
+    const bothOnclick = () => {
+        props.setViewMode("both");
+    }
+
+    const previewOnclick = () => {
+        props.setViewMode("preview");
+    }
+
+    useEffect(() => {
+        switch (props.viewMode) {
+            case "editor":
+                editorRef.current.className = "dock-active";
+                bothRef.current.className = "";
+                previewRef.current.className = "";
+                break;
+            case "both":
+                editorRef.current.className = "";
+                bothRef.current.className = "dock-active";
+                previewRef.current.className = "";
+                break;
+            case "preview":
+                editorRef.current.className = "";
+                bothRef.current.className = "";
+                previewRef.current.className = "dock-active";
+                break;
+            default:
+                break;
+        }
+    }, [props.viewMode]);
+
     return (
         <div className="dock bg-neutral text-neutral-content">
-            <button>
+            <button ref={editorRef} onClick={editorOnclick}>
                 <svg
                     className="size-[1.7em]"
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,12 +81,12 @@ function Footer(props) {
                 <span className="dock-label">Editor</span>
             </button>
 
-            <button className="dock-active">
+            <button ref={bothRef} onClick={bothOnclick} className="dock-active">
                 <svg className="size-[1.7em]" fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <rect y="85.336" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect y="150.392" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect y="215.448" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect y="280.52" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect y="345.592" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect y="410.664" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect x="277.328" y="85.336" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect x="277.328" y="150.392" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect x="277.328" y="215.448" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect x="277.328" y="280.52" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect x="277.328" y="345.592" width="234.672" height="16"></rect> </g> </g> <g> <g> <rect x="277.328" y="410.664" width="234.672" height="16"></rect> </g> </g> </g></svg>
                 <span className="dock-label">Both</span>
             </button>
 
-            <button>
+            <button ref={previewRef} onClick={previewOnclick}>
                 <svg
                     className="size-[1.7em]"
                     xmlns="http://www.w3.org/2000/svg"
