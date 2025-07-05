@@ -1,26 +1,24 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { enableTabToIndent } from 'indent-textarea';
 import {
     FaBold, FaItalic, FaHeading, FaStrikethrough, FaListUl, FaListOl,
     FaCheckSquare, FaQuoteRight, FaCode, FaTable, FaLink, FaImage
 } from "react-icons/fa";
 
-function Editor({ markdown, setMarkdown, editorTextareaRef, handleEditorScroll }) {
-    const textareaRef = editorTextareaRef || useRef();
-
+function Editor(props) {
     useEffect(() => {
-        if (textareaRef.current) {
-            enableTabToIndent(textareaRef.current);
+        if (props.editorTextareaRef.current) {
+            enableTabToIndent(props.editorTextareaRef.current);
         }
-    }, [textareaRef]);
+    }, [props.editorTextareaRef]);
 
     const insertAtCursor = (before, after = "") => {
-        const textarea = textareaRef.current;
+        const textarea = props.editorTextareaRef.current;
         const start = textarea.selectionStart;
         const end = textarea.selectionEnd;
         const selected = textarea.value.slice(start, end);
         const newValue = textarea.value.slice(0, start) + before + selected + after + textarea.value.slice(end);
-        setMarkdown(newValue);
+        props.setMarkdown(newValue);
         // Move cursor
         setTimeout(() => {
             textarea.focus();
@@ -52,11 +50,11 @@ function Editor({ markdown, setMarkdown, editorTextareaRef, handleEditorScroll }
                 </div>
             </div>
             <textarea
-                ref={textareaRef}
+                ref={props.editorTextareaRef}
                 className="textarea textarea-bordered grow font-mono w-full"
-                value={markdown}
-                onChange={e => setMarkdown(e.target.value)}
-                onScroll={handleEditorScroll}
+                value={props.markdown}
+                onChange={e => props.setMarkdown(e.target.value)}
+                onScroll={props.handleEditorScroll}
                 style={{ resize: "none" }}
             />
         </div>
