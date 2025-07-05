@@ -14,14 +14,17 @@ function Previewer(props) {
 
     return (
         <div className="flex flex-col bg-base-100 rounded-box shadow-xl/30 p-4 overflow-auto">
-            <div className="text-lg font-bold mb-2">Preview</div>
-            <div>
-                <input
-                    type="checkbox"
-                    checked={props.syncScroll}
-                    onChange={handleSyncscrollChange}
-                />
-                <label>Sync Scroll</label>
+            <div className="flex flex-row items-center justify-between">
+                <div className="text-lg font-bold mb-2">Preview</div>
+                <div className="font-light mb-2 flex">
+                    <input
+                        className="ml-2"
+                        type="checkbox"
+                        checked={props.syncScroll}
+                        onChange={handleSyncscrollChange}
+                    />
+                    <label className="ml-1">Sync Scroll</label>
+                </div>
             </div>
             <div ref={props.previewDivRef} onScroll={props.handlePreviewScroll} className="prose max-w-none dark:prose-invert markdown overflow-auto">
                 <ReactMarkdown
