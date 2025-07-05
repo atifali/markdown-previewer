@@ -2,20 +2,22 @@ function Navbar(props) {
     return (
         <div className="navbar bg-primary text-primary-content shadow-sm">
             <div className="navbar-start">
-                <svg
-                    className="m-2 swap-off h-8 w-8 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
-                    <g strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                        fill="none"
-                        stroke="currentColor">
-                        <path
-                            d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
-                        </path>
-                    </g>
-                </svg>
+                <a href="https://github.com/atifali/markdown-previewer">
+                    <svg
+                        className="m-2 swap-off h-8 w-8 fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24">
+                        <g strokeLinejoin="round"
+                            strokeLinecap="round"
+                            strokeWidth="2"
+                            fill="none"
+                            stroke="currentColor">
+                            <path
+                                d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
             </div>
             <div className="navbar-center">
                 <a className="text-3xl">Markdown Previewer</a>
