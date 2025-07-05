@@ -8,8 +8,6 @@ import rehypeRaw from "rehype-raw";
 import 'katex/dist/katex.min.css';
 
 function Previewer(props) {
-    const previewRef = useRef(null);
-
     const handleSyncscrollChange = (event) => {
         props.setSyncScroll(event.target.checked);
     };
@@ -28,13 +26,13 @@ function Previewer(props) {
             const url = URL.createObjectURL(blob);
             downloadFile(url, "preview.md");
         } else if (type === "html") {
-            const html = previewRef.current.innerHTML;
+            const html = props.previewDivRef.current.innerHTML;
             const blob = new Blob([html], { type: "text/html" });
             const url = URL.createObjectURL(blob);
             downloadFile(url, "preview.html");
         } else if (type === "pdf") {
             const printWindow = window.open("", "_blank");
-            printWindow.document.write(`<html><head><title>Preview PDF</title></head><body>${previewRef.current.innerHTML}</body></html>`);
+            printWindow.document.write(`<html><head><title>Preview PDF</title></head><body>${props.previewDivRef.current.innerHTML}</body></html>`);
             printWindow.document.close();
             printWindow.focus();
             printWindow.print();
@@ -66,7 +64,7 @@ function Previewer(props) {
                 </div>
             </div>
             <div
-                ref={previewRef}
+                ref={props.previewDivRef}
                 onScroll={props.handlePreviewScroll}
                 className="prose max-w-none dark:prose-invert overflow-auto"
             >
