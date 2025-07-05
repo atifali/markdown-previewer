@@ -45,7 +45,7 @@ function Previewer(props) {
         <div className="flex flex-col bg-base-100 rounded-box shadow-xl/30 p-4 overflow-auto">
             <div className="flex flex-row items-center justify-between">
                 <div className="text-lg font-bold mb-2">Preview</div>
-                <div className="flex items-center gap-2 font-light mb-2">
+                <div className="flex flex-wrap items-center gap-2 font-light mb-2">
                     <div className="flex">
                         <input
                             className="ml-2"

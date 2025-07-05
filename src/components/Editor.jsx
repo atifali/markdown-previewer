@@ -32,23 +32,21 @@ function Editor({ markdown, setMarkdown, editorTextareaRef, handleEditorScroll }
         <div className="flex flex-col bg-base-100 rounded-box shadow-xl/30 p-4 min-h-0 overflow-auto">
             <div className="flex flex-row items-center justify-between mb-2">
                 <div className="text-lg font-bold">Editor</div>
-                <div className="flex gap-2">
-                    <button title="Bold" onClick={() => insertAtCursor("**", "**")}><FaBold /></button>
-                    <button title="Italic" onClick={() => insertAtCursor("_", "_")}><FaItalic /></button>
-                    <button title="Heading" onClick={() => insertAtCursor("# ", "")}><FaHeading /></button>
-                    <button title="Strikethrough" onClick={() => insertAtCursor("~~", "~~")}><FaStrikethrough /></button>
-                    <button title="Unordered List" onClick={() => insertAtCursor("- ", "")}><FaListUl /></button>
-                    <button title="Ordered List" onClick={() => insertAtCursor("1. ", "")}><FaListOl /></button>
-                    <button title="Checklist" onClick={() => insertAtCursor("- [ ] ", "")}><FaCheckSquare /></button>
-                    <button title="Blockquote" onClick={() => insertAtCursor("> ", "")}><FaQuoteRight /></button>
-                    <button title="Code" onClick={() => insertAtCursor("`", "`")}><FaCode /></button>
-                    <button title="Table" onClick={() => insertAtCursor("\n| Header | Header |\n| ------ | ------ |\n| Cell   | Cell   |\n")}>
-                        <FaTable />
-                    </button>
-                    <button title="Link" onClick={() => insertAtCursor("[", "](url)")}>
+                <div className="flex flex-wrap gap-4 ml-2">
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Bold" onClick={() => insertAtCursor("**Bold Text", "**")}><FaBold /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Italic" onClick={() => insertAtCursor("_Italic Text", "_")}><FaItalic /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Heading" onClick={() => insertAtCursor("# ", "Heading")}><FaHeading /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Strikethrough" onClick={() => insertAtCursor("~~Strikethrough Text", "~~")}><FaStrikethrough /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Unordered List" onClick={() => insertAtCursor("- ", "List Item")}><FaListUl /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Ordered List" onClick={() => insertAtCursor("1. ", "List Item")}><FaListOl /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Checklist" onClick={() => insertAtCursor("- [ ] ", "Checklist Item")}><FaCheckSquare /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Blockquote" onClick={() => insertAtCursor("> ", "Blockquote")}><FaQuoteRight /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Code" onClick={() => insertAtCursor("`Inline code", "`")}><FaCode /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Table" onClick={() => insertAtCursor("\n| Header | Header |\n| ------ | ------ |\n| Cell   | Cell   |\n")}><FaTable /></button>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Link" onClick={() => insertAtCursor("[Text", "](url)")}>
                         <FaLink />
                     </button>
-                    <button title="Image" onClick={() => insertAtCursor("![", "](url)")}>
+                    <button className="cursor-pointer hover:bg-base-200 hover:text-primary transition-colors duration-150 rounded" title="Image" onClick={() => insertAtCursor("![Alt text", "](url)")}>
                         <FaImage />
                     </button>
                 </div>
@@ -59,7 +57,7 @@ function Editor({ markdown, setMarkdown, editorTextareaRef, handleEditorScroll }
                 value={markdown}
                 onChange={e => setMarkdown(e.target.value)}
                 onScroll={handleEditorScroll}
-                style={{ minHeight: "200px" }}
+                style={{ resize: "none" }}
             />
         </div>
     );
